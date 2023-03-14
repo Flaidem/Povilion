@@ -1,0 +1,33 @@
+﻿<Page x:Class="Povilion.Maintable"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Povilion"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="Maintable">
+
+    <Grid>
+        <DataGrid x:Name="dg" HorizontalAlignment="Left" Height="416" Margin="10,85,0,0" VerticalAlignment="Top" Width="746" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Width="*" Binding="{Binding desc_shop}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кол-во Повил." Width="*" Binding="{Binding countPol}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Город" Width="*" Binding="{Binding City}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость" Width="*" Binding="{Binding Cost}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Этажность" Width="*" Binding="{Binding num_of_floors}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Коэф." Width="*" Binding="{Binding ratio}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="10,528,0,0" VerticalAlignment="Top" Width="172" Click="addcent"/>
+        <Button Content="Удалить" HorizontalAlignment="Left" Height="38" Margin="440,528,0,0" VerticalAlignment="Top" Width="172" Click="Delcent"/>
+        <Button Content="Редактировать" HorizontalAlignment="Left" Height="38" Margin="224,528,0,0" VerticalAlignment="Top" Width="172" Click="EddCent"/>
+        <Button Content="Х" HorizontalAlignment="Left" Height="24" Margin="859,10,0,0" VerticalAlignment="Top" Width="31" Click="BackAvtor"/>
+        <Button Content="Повильоны" HorizontalAlignment="Left" Height="38" Margin="718,528,0,0" VerticalAlignment="Top" Width="172" Click="povilcent"/>
+        <Label Content="Фильтр" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Height="34" Width="172"/>
+        <Label Content="Фильтр" HorizontalAlignment="Left" Margin="363,46,0,0" VerticalAlignment="Top" Height="34" Width="172"/>
+        <ComboBox HorizontalAlignment="Left" Height="34" Margin="440,46,0,0" VerticalAlignment="Top" Width="179"/>
+        <ComboBox HorizontalAlignment="Left" Height="34" Margin="80,46,0,0" VerticalAlignment="Top" Width="179"/>
+    </Grid>
+</Page>

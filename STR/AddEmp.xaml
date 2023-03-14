@@ -1,0 +1,32 @@
+﻿<Window x:Class="Povilion.STR.AddEmp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Povilion.STR"
+        mc:Ignorable="d"
+        Icon="/STR/KingIt.png"
+        Title="Добавление ТЦ" Height="500" Width="400" >
+    <Grid>
+        <Label Content="Имя" HorizontalAlignment="Left" Height="26" Margin="10,27,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Height="26" Margin="10,75,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Height="26" Margin="10,124,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Height="26" Margin="10,172,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Height="26" Margin="230,172,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Height="26" Margin="10,251,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" Height="26" Margin="230,251,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Пол" HorizontalAlignment="Left" Height="26" Margin="10,331,0,0" VerticalAlignment="Top" Width="67"/>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Height="26" Margin="273,370,0,0" VerticalAlignment="Top" Width="91" Click="Serchphoto"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="26" Margin="216,433,0,0" VerticalAlignment="Top" Width="166" Click="addemp"/>
+        <Label Content="Фото" HorizontalAlignment="Left" Height="26" Margin="10,370,0,0" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="namebox" HorizontalAlignment="Left" Height="26" Margin="216,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="surnamebox" HorizontalAlignment="Left" Height="26" Margin="216,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="midnamebox" HorizontalAlignment="Left" Height="26" Margin="216,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="logbox" HorizontalAlignment="Left" Height="26" Margin="10,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="passbox" HorizontalAlignment="Left" Height="26" Margin="216,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+        <TextBox x:Name="phonebox" HorizontalAlignment="Left" Height="26" Margin="216,282,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="166"/>
+        <ComboBox x:Name="postbox" HorizontalAlignment="Left" Height="26" Margin="10,282,0,0" VerticalAlignment="Top" Width="152"/>
+        <ComboBox x:Name="genbox" HorizontalAlignment="Left" Height="26" Margin="116,331,0,0" VerticalAlignment="Top" Width="46"/>
+
+    </Grid>
+</Window>
