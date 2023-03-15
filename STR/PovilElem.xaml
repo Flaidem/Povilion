@@ -8,9 +8,14 @@
         Icon="/STR/KingIt.png"
         Title="Повильоны" Height="500" Width="800">
     <Grid>
-        <DataGrid x:Name="dg" HorizontalAlignment="Left" Height="314" Margin="10,67,0,0" VerticalAlignment="Top" Width="772" AutoGenerateColumns="True" IsReadOnly="True">
+        <DataGrid x:Name="dg" HorizontalAlignment="Left" Height="314" Margin="10,67,0,0" VerticalAlignment="Top" Width="772" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-
+                <DataGridTextColumn Header="Этаж" Width="*" Binding="{Binding floor}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер павильона" Width="*" Binding="{Binding num_povil}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Площадь" Width="*" Binding="{Binding area}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Width="*" Binding="{Binding desc_status}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Коэф." Width="*" Binding="{Binding value_added}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Стоимость за кв.м." Width="*" Binding="{Binding cost}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="10,421,0,0" VerticalAlignment="Top" Width="172" Click="addpov"/>

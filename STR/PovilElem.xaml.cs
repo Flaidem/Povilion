@@ -14,20 +14,21 @@ using System.Windows.Shapes;
 
 namespace Povilion.STR
 {
-    /// <summary>
-    /// Логика взаимодействия для PovilElem.xaml
-    /// </summary>
     public partial class PovilElem : Window
     {
         public PovilElem(Shop_Centers j)
         {
+            List<KeyValuePair<int, string>> sl = new List<KeyValuePair<int, string>>();
             InitializeComponent();
             using (var db = new PovillonsEntities())
             {
-                //var s = db.Shop_Centers.Find(j.Shop_Centr_id);
-                dg.ItemsSource = db.pavilions.Where(a => a.Shop_Centr_id == j.Shop_Centr_id).ToList();
+                var list = db.PovilTabFil(j.Shop_Centr_id).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, string>(i, list[i].num_povil));
+                }
+                dg.ItemsSource = list;
             }
-                //dg.ItemsSource = db.MainWindTable("Строительство", "").ToList();  Изменить
         }
 
         private void addpov(object sender, RoutedEventArgs e)

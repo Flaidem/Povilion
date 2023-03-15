@@ -27,12 +27,14 @@ namespace Povilion
             InitializeComponent();
             using (var db = new PovillonsEntities())
             {
-                var list = db.MainWindTable("Строительство", "").ToList();
+                var list = db.MainWindTable(combcit.Text, comstat.Text).ToList();
                 for (int i = 0; i < list.Count; i++)
                 {
                     sl.Add(new KeyValuePair<int, int>(i, list[i].Shop_Centr_id));
                 }
                 dg.ItemsSource = list;
+                combcit.ItemsSource = db.Shop_Centers.Select(a =>a.City).Distinct().ToList();
+                comstat.ItemsSource = db.status_shop.Select(a => a.desc_shop).Distinct().ToList();
             }
         }
 
@@ -44,7 +46,7 @@ namespace Povilion
 
         private void EddCent(object sender, RoutedEventArgs e)
         {
-            var b = sl[dg.SelectedIndex];
+            var b = sl[dg.SelectedIndex];//Не -1
             using (var db = new PovillonsEntities())
             {
                 var s = db.Shop_Centers.Find(b.Value);
@@ -53,7 +55,7 @@ namespace Povilion
             }
             using (var db = new PovillonsEntities())
             {
-                var list = db.MainWindTable("Строительство", "").ToList();
+                var list = db.MainWindTable(combcit.Text, comstat.Text).ToList();
                 for (int i = 0; i < list.Count; i++)
                 {
                     sl.Add(new KeyValuePair<int, int>(i, list[i].Shop_Centr_id));
@@ -64,23 +66,86 @@ namespace Povilion
 
         private void Delcent(object sender, RoutedEventArgs e)
         {
-
+            using (var db = new PovillonsEntities())
+            {
+                var b = sl[dg.SelectedIndex];//не -1
+                var i = db.Shop_Centers.Find(b.Value);
+                var p = db.pavilions.Where(a => a.Shop_Centr_id == i.Shop_Centr_id).ToList();
+                for (int j = 0; j < p.Count; j++)
+                {
+                    p[j].status_id = 4;
+                }
+                i.Status_id = 4;
+                db.SaveChanges();
+            }
         }
 
         private void povilcent(object sender, RoutedEventArgs e)
         {
-            var b = sl[dg.SelectedIndex];//не -1
-            using (var db = new PovillonsEntities())
+            try
             {
-                var s = db.Shop_Centers.Find(b.Value);
-                STR.PovilElem tab = new STR.PovilElem(s);
-                tab.ShowDialog();
+                var b = sl[dg.SelectedIndex];//не -1
+                using (var db = new PovillonsEntities())
+                {
+                    var s = db.Shop_Centers.Find(b.Value);
+                    STR.PovilElem tab = new STR.PovilElem(s);
+                    tab.ShowDialog();
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+            }
+            
         }
 
         private void BackAvtor(object sender, RoutedEventArgs e)
         {
             PageHelper.vau.mainframe.Navigate(new Avtoriz());
+        }
+
+        private void ChCit(object sender, MouseEventArgs e)
+        {
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.MainWindTable(combcit.Text, comstat.Text).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, int>(i, list[i].Shop_Centr_id));
+                }
+                dg.ItemsSource = list;
+                dg.Items.Refresh();
+            }
+        }
+
+        private void chstat(object sender, MouseEventArgs e)
+        {
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.MainWindTable(combcit.Text, comstat.Text).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, int>(i, list[i].Shop_Centr_id));
+                }
+                dg.ItemsSource = list;
+                dg.Items.Refresh();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            combcit.Text = " ";
+            comstat.Text = " ";
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.MainWindTable(combcit.Text, comstat.Text).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, int>(i, list[i].Shop_Centr_id));
+                }
+                dg.ItemsSource = list;
+                dg.Items.Refresh();
+            }
         }
     }
 }

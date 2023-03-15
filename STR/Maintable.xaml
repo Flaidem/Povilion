@@ -18,6 +18,13 @@
                 <DataGridTextColumn Header="Стоимость" Width="*" Binding="{Binding Cost}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Этажность" Width="*" Binding="{Binding num_of_floors}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Коэф." Width="*" Binding="{Binding ratio}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Icon}"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="10,528,0,0" VerticalAlignment="Top" Width="172" Click="addcent"/>
@@ -27,7 +34,8 @@
         <Button Content="Повильоны" HorizontalAlignment="Left" Height="38" Margin="718,528,0,0" VerticalAlignment="Top" Width="172" Click="povilcent"/>
         <Label Content="Фильтр" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" Height="34" Width="172"/>
         <Label Content="Фильтр" HorizontalAlignment="Left" Margin="363,46,0,0" VerticalAlignment="Top" Height="34" Width="172"/>
-        <ComboBox HorizontalAlignment="Left" Height="34" Margin="440,46,0,0" VerticalAlignment="Top" Width="179"/>
-        <ComboBox HorizontalAlignment="Left" Height="34" Margin="80,46,0,0" VerticalAlignment="Top" Width="179"/>
+        <ComboBox x:Name="comstat" HorizontalAlignment="Left" Height="34" Margin="440,46,0,0" VerticalAlignment="Top" Width="179" MouseLeave="chstat"/>
+        <ComboBox x:Name="combcit" HorizontalAlignment="Left" Height="34" Margin="80,46,0,0" VerticalAlignment="Top" Width="179" MouseLeave="ChCit"/>
+        <Button Content="Сброс" HorizontalAlignment="Left" Height="27" Margin="701,53,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click"/>
     </Grid>
 </Page>

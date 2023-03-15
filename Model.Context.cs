@@ -155,5 +155,35 @@ namespace Povilion
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        [EdmFunction("PovillonsEntities", "PovilTable")]
+        public virtual IQueryable<PovilTable_Result> PovilTable()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PovilTable_Result>("[PovillonsEntities].[PovilTable]()");
+        }
+    
+        [EdmFunction("PovillonsEntities", "PovilTabFil")]
+        public virtual IQueryable<PovilTabFil_Result> PovilTabFil(Nullable<int> twofilt)
+        {
+            var twofiltParameter = twofilt.HasValue ?
+                new ObjectParameter("twofilt", twofilt) :
+                new ObjectParameter("twofilt", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PovilTabFil_Result>("[PovillonsEntities].[PovilTabFil](@twofilt)", twofiltParameter);
+        }
+    
+        [EdmFunction("PovillonsEntities", "MainWindTableOne")]
+        public virtual IQueryable<MainWindTableOne_Result> MainWindTableOne(string onefilt, string twofilt)
+        {
+            var onefiltParameter = onefilt != null ?
+                new ObjectParameter("onefilt", onefilt) :
+                new ObjectParameter("onefilt", typeof(string));
+    
+            var twofiltParameter = twofilt != null ?
+                new ObjectParameter("twofilt", twofilt) :
+                new ObjectParameter("twofilt", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MainWindTableOne_Result>("[PovillonsEntities].[MainWindTableOne](@onefilt, @twofilt)", onefiltParameter, twofiltParameter);
+        }
     }
 }

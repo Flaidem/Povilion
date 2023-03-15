@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище PovillonsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище PovillonsModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Empoloy">
           <Key>
             <PropertyRef Name="Emp_id" />
@@ -224,6 +224,54 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="MainWindTableOne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="onefilt" Type="nvarchar" Mode="In" />
+          <Parameter Name="twofilt" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Shop_Centr_id" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="desc_shop" Type="nvarchar" MaxLength="30" Nullable="false" />
+                <Property Name="countPol" Type="int" />
+                <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="Cost" Type="money" Nullable="false" />
+                <Property Name="num_of_floors" Type="int" Nullable="false" />
+                <Property Name="ratio" Type="real" />
+                <Property Name="Icon" Type="image" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="PovilTabFil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="twofilt" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="floor" Type="int" Nullable="false" />
+                <Property Name="num_povil" Type="nvarchar" MaxLength="5" Nullable="false" />
+                <Property Name="area" Type="real" Nullable="false" />
+                <Property Name="desc_status" Type="nvarchar" MaxLength="15" Nullable="false" />
+                <Property Name="value_added" Type="real" />
+                <Property Name="cost" Type="money" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="PovilTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="floor" Type="int" Nullable="false" />
+                <Property Name="num_povil" Type="nvarchar" MaxLength="5" Nullable="false" />
+                <Property Name="area" Type="real" Nullable="false" />
+                <Property Name="desc_status" Type="nvarchar" MaxLength="15" Nullable="false" />
+                <Property Name="value_added" Type="real" />
+                <Property Name="cost" Type="money" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -298,8 +346,7 @@
             <End Role="Shop_Centers" EntitySet="Shop_Centers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PovillonsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -606,6 +653,14 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="PovilTable" IsComposable="true" ReturnType="Collection(PovillonsModel.PovilTable_Result)" />
+          <FunctionImport Name="PovilTabFil" IsComposable="true" ReturnType="Collection(PovillonsModel.PovilTabFil_Result)">
+          <Parameter Name="twofilt" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MainWindTableOne" IsComposable="true" ReturnType="Collection(PovillonsModel.MainWindTableOne_Result)">
+            <Parameter Name="onefilt" Mode="In" Type="String" />
+            <Parameter Name="twofilt" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -617,6 +672,33 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="PovilTable_Result">
+          <Property Type="Int32" Name="floor" Nullable="false" />
+          <Property Type="String" Name="num_povil" Nullable="false" MaxLength="5" />
+          <Property Type="Single" Name="area" Nullable="false" />
+          <Property Type="String" Name="desc_status" Nullable="false" MaxLength="15" />
+          <Property Type="Single" Name="value_added" Nullable="true" />
+          <Property Type="Decimal" Name="cost" Nullable="false" Precision="19" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="PovilTabFil_Result">
+          <Property Type="Int32" Name="floor" Nullable="false" />
+          <Property Type="String" Name="num_povil" Nullable="false" MaxLength="5" />
+          <Property Type="Single" Name="area" Nullable="false" />
+          <Property Type="String" Name="desc_status" Nullable="false" MaxLength="15" />
+          <Property Type="Single" Name="value_added" Nullable="true" />
+          <Property Type="Decimal" Name="cost" Nullable="false" Precision="19" Scale="4" />
+        </ComplexType>
+        <ComplexType Name="MainWindTableOne_Result">
+          <Property Type="Int32" Name="Shop_Centr_id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="desc_shop" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="countPol" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Cost" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="num_of_floors" Nullable="false" />
+          <Property Type="Single" Name="ratio" Nullable="true" />
+          <Property Type="Binary" Name="Icon" Nullable="true" MaxLength="Max" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -773,6 +855,45 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище PovillonsModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище PovillonsModel.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="PovilTable" FunctionName="Хранилище PovillonsModel.PovilTable">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PovillonsModel.PovilTable_Result">
+                <ScalarProperty Name="floor" ColumnName="floor" />
+                <ScalarProperty Name="num_povil" ColumnName="num_povil" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="desc_status" ColumnName="desc_status" />
+                <ScalarProperty Name="value_added" ColumnName="value_added" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PovilTabFil" FunctionName="Хранилище PovillonsModel.PovilTabFil">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PovillonsModel.PovilTabFil_Result">
+                <ScalarProperty Name="floor" ColumnName="floor" />
+                <ScalarProperty Name="num_povil" ColumnName="num_povil" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="desc_status" ColumnName="desc_status" />
+                <ScalarProperty Name="value_added" ColumnName="value_added" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MainWindTableOne" FunctionName="Хранилище PovillonsModel.MainWindTableOne">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PovillonsModel.MainWindTableOne_Result">
+                <ScalarProperty Name="Shop_Centr_id" ColumnName="Shop_Centr_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="desc_shop" ColumnName="desc_shop" />
+                <ScalarProperty Name="countPol" ColumnName="countPol" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="num_of_floors" ColumnName="num_of_floors" />
+                <ScalarProperty Name="ratio" ColumnName="ratio" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

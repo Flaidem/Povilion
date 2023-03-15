@@ -21,7 +21,7 @@ namespace Povilion
     {
         public EdShop(Shop_Centers j)
         {
-            j.Name = "Щукаа";
+            j.Name = "Реутов Парк";
             InitializeComponent();
             using (var db = new PovillonsEntities())
             {
