@@ -15,8 +15,6 @@
         <Label Content="Стоимость" HorizontalAlignment="Left" Height="26" Margin="10,230,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Добавочный фильтр" HorizontalAlignment="Left" Height="26" Margin="10,278,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Кол-во этажей" HorizontalAlignment="Left" Height="26" Margin="10,324,0,0" VerticalAlignment="Top" Width="152"/>
-        <Label Content="Изображение" HorizontalAlignment="Left" Height="26" Margin="10,380,0,0" VerticalAlignment="Top" Width="152"/>
-        <Button Content="Выбрать" HorizontalAlignment="Left" Height="26" Margin="291,380,0,0" VerticalAlignment="Top" Width="91"/>
         <Button Content="Добавить" HorizontalAlignment="Left" Height="26" Margin="216,433,0,0" VerticalAlignment="Top" Width="166" Click="addshop"/>
         <TextBox x:Name="namebox" HorizontalAlignment="Left" Height="26" Margin="230,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
         <TextBox x:Name="countbox" HorizontalAlignment="Left" Height="26" Margin="230,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
@@ -25,6 +23,8 @@
         <TextBox x:Name="ratiobox" HorizontalAlignment="Left" Height="26" Margin="230,278,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
         <TextBox x:Name="floorbox" HorizontalAlignment="Left" Height="26" Margin="230,324,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
         <ComboBox x:Name="statbox" HorizontalAlignment="Left" Height="26" Margin="230,87,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Номер повильона" HorizontalAlignment="Left" Height="24" Margin="10,380,0,0" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="num" HorizontalAlignment="Left" Height="26" Margin="230,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
 
     </Grid>
 </Window>

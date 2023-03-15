@@ -20,9 +20,20 @@ namespace Povilion.STR
     /// </summary>
     public partial class AdmAvt : Page
     {
+
+        List<KeyValuePair<int, int>> sl = new List<KeyValuePair<int, int>>();
         public AdmAvt()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.Empoloys.ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, int>(i, list[i].Emp_id));
+                }
+                dg.ItemsSource = list;
+            }
         }
 
         private void BackAvtor(object sender, RoutedEventArgs e)

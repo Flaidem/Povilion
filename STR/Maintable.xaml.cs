@@ -66,6 +66,8 @@ namespace Povilion
 
         private void Delcent(object sender, RoutedEventArgs e)
         {
+            try
+            {
             using (var db = new PovillonsEntities())
             {
                 var b = sl[dg.SelectedIndex];//не -1
@@ -77,6 +79,20 @@ namespace Povilion
                 }
                 i.Status_id = 4;
                 db.SaveChanges();
+            }
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.MainWindTable(combcit.Text, comstat.Text).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, int>(i, list[i].Shop_Centr_id));
+                }
+                dg.ItemsSource = list;
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка удаления");
             }
         }
 
@@ -91,6 +107,7 @@ namespace Povilion
                     STR.PovilElem tab = new STR.PovilElem(s);
                     tab.ShowDialog();
                 }
+
             }
             catch (Exception)
             {

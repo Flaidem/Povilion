@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Povilion"
         mc:Ignorable="d"
-        Title="EdShop" Height="450" Width="800">
+        Icon="/STR/KingIt.png"
+        Title="Добавление ТЦ" Height="500" Width="400" >
     <Grid>
-        
+        <Label Content="Название" HorizontalAlignment="Left" Height="26" Margin="10,37,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Статус" HorizontalAlignment="Left" Height="26" Margin="10,87,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Кол-во Повильонов" HorizontalAlignment="Left" Height="26" Margin="10,140,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Город" HorizontalAlignment="Left" Height="26" Margin="10,186,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Стоимость" HorizontalAlignment="Left" Height="26" Margin="10,230,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Добавочный фильтр" HorizontalAlignment="Left" Height="26" Margin="10,278,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Кол-во этажей" HorizontalAlignment="Left" Height="26" Margin="10,324,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Изображение" HorizontalAlignment="Left" Height="26" Margin="10,380,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Height="26" Margin="291,380,0,0" VerticalAlignment="Top" Width="91"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Height="26" Margin="216,433,0,0" VerticalAlignment="Top" Width="166" Click="eddshop"/>
+        <TextBox x:Name="namebox" HorizontalAlignment="Left" Height="26" Margin="230,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="countbox" HorizontalAlignment="Left" Height="26" Margin="230,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="dressbox" HorizontalAlignment="Left" Height="26" Margin="230,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="costbox" HorizontalAlignment="Left" Height="26" Margin="230,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="ratiobox" HorizontalAlignment="Left" Height="26" Margin="230,278,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <TextBox x:Name="floorbox" HorizontalAlignment="Left" Height="26" Margin="230,324,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <ComboBox x:Name="statbox" HorizontalAlignment="Left" Height="26" Margin="230,87,0,0" VerticalAlignment="Top" Width="152"/>
     </Grid>
 </Window>

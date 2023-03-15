@@ -1,4 +1,4 @@
-﻿<Window x:Class="Povilion.STR.AddPov"
+﻿<Window x:Class="Povilion.STR.Edpov"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,13 +8,11 @@
         Icon="/STR/KingIt.png"
         Title="Добавление ТЦ" Height="500" Width="400" >
     <Grid>
-        <Label Content="Номер" HorizontalAlignment="Left" Height="26" Margin="10,37,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Этаж" HorizontalAlignment="Left" Height="26" Margin="10,91,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Площадь" HorizontalAlignment="Left" Height="26" Margin="10,149,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Коэфициент" HorizontalAlignment="Left" Height="26" Margin="10,210,0,0" VerticalAlignment="Top" Width="152"/>
         <Label Content="Стоимость" HorizontalAlignment="Left" Height="26" Margin="10,268,0,0" VerticalAlignment="Top" Width="152"/>
-        <Button Content="Добавить" HorizontalAlignment="Left" Height="26" Margin="216,433,0,0" VerticalAlignment="Top" Width="166" Click="addpov"/>
-        <TextBox x:Name="numbox" HorizontalAlignment="Left" Height="26" Margin="230,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Height="26" Margin="216,433,0,0" VerticalAlignment="Top" Width="166" Click="eddpov"/>
         <TextBox x:Name="flobox" HorizontalAlignment="Left" Height="26" Margin="230,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
         <TextBox x:Name="areabox" HorizontalAlignment="Left" Height="26" Margin="230,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
         <TextBox x:Name="ratiobox" HorizontalAlignment="Left" Height="26" Margin="230,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>

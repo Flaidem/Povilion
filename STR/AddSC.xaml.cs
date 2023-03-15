@@ -24,6 +24,7 @@ namespace Povilion.STR
             InitializeComponent();
             statbox.Items.Add("План");
             statbox.Items.Add("Строительство");
+            statbox.Items.Add("Реализация");
             statbox.Items.Add("Удален");
         }
 
@@ -45,20 +46,41 @@ namespace Povilion.STR
                       }
                       else if (statbox.Text == "Удален")
                       {
-                          i.Status_id = 3;
+                          i.Status_id = 4;
                       }
-                      else
-                      {
+                      else if (statbox.Text == "Реализация")
+                        {
+                            i.Status_id = 3;
+                        } else
+                        {
                           i.Status_id = 2;
-                      }
+                        }
                       i.povil_count = Convert.ToInt32(countbox.Text);
                       i.City = dressbox.Text;
                       i.Cost = Convert.ToDecimal(costbox.Text);
                       i.num_of_floors = Convert.ToInt32(floorbox.Text);
                       i.ratio = Convert.ToSingle(ratiobox.Text);
                   }
-                  db.Shop_Centers.Add(i);
-                  db.SaveChanges();
+                    var log = db.Shop_Centers.Where(a => a.Name == i.Name).FirstOrDefault();
+                    if (log != null)
+                    {
+                        MessageBox.Show("ТЦ уже добавлен");
+                    }
+                    else
+                    {
+                        var j = new pavilion();
+                        j.Shop_Centr_id = i.Shop_Centr_id;
+                        j.num_povil = num.Text;
+                        j.floor = 1;
+                        j.status_id = 1;
+                        j.area = 10;
+                        j.cost = 10;
+                        j.value_added = 10;
+                        db.pavilions.Add(j);
+                        db.Shop_Centers.Add(i);
+                        db.SaveChanges();
+                        MessageBox.Show("Успешно");
+                    }
                 }
                 catch (Exception)
                 {

@@ -141,6 +141,9 @@
     <Compile Include="STR\Avtoriz.xaml.cs">
       <DependentUpon>Avtoriz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="STR\Edpov.xaml.cs">
+      <DependentUpon>Edpov.xaml</DependentUpon>
+    </Compile>
     <Compile Include="STR\PageHelper.cs" />
     <Compile Include="STR\Maintable.xaml.cs">
       <DependentUpon>Maintable.xaml</DependentUpon>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="STR\Avtoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="STR\Edpov.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

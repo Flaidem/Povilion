@@ -16,9 +16,11 @@ namespace Povilion.STR
 {
     public partial class PovilElem : Window
     {
+        int id;
+        List<KeyValuePair<int, string>> sl = new List<KeyValuePair<int, string>>();
         public PovilElem(Shop_Centers j)
         {
-            List<KeyValuePair<int, string>> sl = new List<KeyValuePair<int, string>>();
+            id = j.Shop_Centr_id;
             InitializeComponent();
             using (var db = new PovillonsEntities())
             {
@@ -33,18 +35,64 @@ namespace Povilion.STR
 
         private void addpov(object sender, RoutedEventArgs e)
         {
-            STR.AddPov tab = new STR.AddPov();
+            STR.AddPov tab = new STR.AddPov(id);
             tab.ShowDialog();
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.PovilTabFil(id).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, string>(i, list[i].num_povil));
+                }
+                dg.ItemsSource = list;
+            }
         }
 
         private void eddpov(object sender, RoutedEventArgs e)
         {
-
+            using (var db = new PovillonsEntities())
+            {
+                var b = sl[dg.SelectedIndex];//не -1
+                var p = db.pavilions.Where(a => a.num_povil == b.Value).FirstOrDefault();
+                STR.Edpov tab = new STR.Edpov(p.num_povil);
+                tab.ShowDialog();
+            }
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.PovilTabFil(id).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, string>(i, list[i].num_povil));
+                }
+                dg.ItemsSource = list;
+            }
         }
 
         private void delpov(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+            using (var db = new PovillonsEntities())
+            {
+                var b = sl[dg.SelectedIndex];//не -1
+                var p = db.pavilions.Where(a => a.num_povil == b.Value).FirstOrDefault();
+                p.status_id = 4;
+                db.SaveChanges();
+            }
+            using (var db = new PovillonsEntities())
+            {
+                var list = db.PovilTabFil(id).ToList();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    sl.Add(new KeyValuePair<int, string>(i, list[i].num_povil));
+                }
+                dg.ItemsSource = list;
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка удаления");
+            }
         }
     }
 }
